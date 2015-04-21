@@ -1,0 +1,44 @@
+<html>
+ <head>
+    <meta charset="UTF-8">
+    <title>Kelvin Watson - CS290 Assignment 3, Part 2: Adding AJAX and HTML</title>
+    <link rel="stylesheet" href="watsokelStyle.css">
+  </head>
+  
+  <body>
+  <header>
+    <h1>CS 290: Assignment 3, Part 2: Adding AJAX and HTML</h2>
+    <p>Programmed by: Kelvin Watson (OSU ID 932540242)</p>
+  </header>
+  
+  <section id="searchForm">
+
+    <h2>Search Gists from GitHub</h2>
+    <form action="#" method="get">
+      <fieldset>
+        <legend>Select the Number of Pages</legend>
+        <label for="onePage">1</label><input type="radio" name="pages" value="1"><br/>
+        <label for="twoPage">2</label><input type="radio" name="pages" value="2"><br/>
+        <label for="threePage">3</label><input type="radio" name="pages" value="3"><br/>
+        <label for="fourPage">4</label><input type="radio" name="pages" value="4"><br/>
+        <label for="fivePage">5</label><input type="radio" name="pages" value="5"><br/>
+      </fieldset>
+      <fieldset>
+        <legend>Select Languages</legend>
+        <input type="checkbox" name="languages"><label for="pythonLang">Python</label><br/>
+        <input type="checkbox" name="languages"><label for="jsonLang">JSON</label><br/>
+        <input type="checkbox" name="languages"><label for="javaScriptLang">JavaScript</label><br/>
+        <input type="checkbox" name="languages"><label for="SQL">SQL</label><br/>
+      </fieldset><br/>
+      <input id="ajaxButton" name="submitButton" type="submit" value="Initiate Search">
+    </form>
+  </section>
+
+  <section id="results">
+    Results to show up here
+
+  </section>
+  <script src="watsokelA3Gist.js"></script>
+
+  </body>
+</html>
