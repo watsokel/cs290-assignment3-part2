@@ -79,13 +79,34 @@ function displayResults(r){
       var tr = document.createElement('tr');
       for(var k=0; k<2; k++){
         var td = document.createElement('td');
-        if(j==0 && k==0) var tdText = document.createTextNode('Description:');
-        if(j==0 && k==1) var tdText = document.createTextNode(r[i].description);
-        if(j==1 && k==0) var tdText = document.createTextNode('URL');
-        if(j==1 && k==1) var tdText = document.createTextNode(r[i].url);
-        if(j==2 && k==0) var tdText = document.createTextNode('Language');
-        if(j==2 && k==1) var tdText = document.createTextNode(r[i].files.language);
-        td.appendChild(tdText);
+        if(j==0 && k==0) {
+          var tdText = document.createTextNode('Description:');
+          td.appendChild(tdText);
+        }
+        if(j==0 && k==1) {
+          var tdText = document.createTextNode(r[i].description);
+          td.appendChild(tdText);
+        }
+        if(j==1 && k==0) {
+          var tdText = document.createTextNode('URL');
+          td.appendChild(tdText);
+        }
+        if(j==1 && k==1) {
+          var gistURL = document.createElement('a');
+          var gistURLText = document.createTextNode(r[i].url);
+          gistURL.href = gistURLText;
+          gistURL.appendChild(gistURLText);
+          td.appendChild(gistURL);
+        }
+        if(j==2 && k==0) {
+          var tdText = document.createTextNode('Language');
+          td.appendChild(tdText);
+        }
+        if(j==2 && k==1) {
+          debugger;
+          var tdText = document.createTextNode(r[i].files[Object.keys(r[i].files)[0]].language);
+          td.appendChild(tdText);
+        }
         tr.appendChild(td);
       }
       tbody.appendChild(tr);
