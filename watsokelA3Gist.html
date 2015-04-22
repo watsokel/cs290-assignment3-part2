@@ -7,16 +7,17 @@
   
   <body>
   <header>
-    <h1>CS 290: Assignment 3, Part 2: Adding AJAX and HTML</h2>
-    <p>Programmed by: Kelvin Watson (OSU ID 932540242)</p>
+    <h1><span id="courseNumber">CS 290</span> Assignment 3, Part 2</h1>
+    <h2>Adding AJAX and HTML</h2>
+    <p>Programmed by: <span id="author">Kelvin Watson</span> (OSU ID 932540242)</p>
   </header>
   
   <section id="searchForm">
 
-    <h2>Search Gists from GitHub</h2>
+    <h3>Search Gists from GitHub</h3>
     <form action="#" method="get" onSubmit="return submitForm()">
       <fieldset>
-        <legend>Select the Number of Pages</legend>
+        <legend>Select Number of Pages to Display</legend>
         <label for="onePage">1</label><input type="radio" name="pages" value="1"><br/>
         <label for="twoPage">2</label><input type="radio" name="pages" value="2"><br/>
         <label for="threePage">3</label><input type="radio" name="pages" value="3"><br/>
@@ -29,14 +30,15 @@
         <input type="checkbox" name="languages" value="JSON"><label for="jsonLang">JSON</label><br/>
         <input type="checkbox" name="languages" value="JavaScript"><label for="javaScriptLang">JavaScript</label><br/>
         <input type="checkbox" name="languages" value="SQL"><label for="SQL">SQL</label><br/>
+        <input type="checkbox" name="languages" value="C++"><label for="C++">C++</label><br/>
+        <input type="checkbox" name="languages" value="Markdown"><label for="Markdown">Markdown</label><br/>
       </fieldset><br/>
       <input id="ajaxButton" name="submitButton" type="submit" value="Initiate Search">
     </form>
   </section>
 
-  <section id="results">
   <nav></nav>
-  </section>
+  <section id="results">Results</section>
   <script src="watsokelA3Gist.js"></script>
 
   </body>

@@ -1,0 +1,51 @@
+body{
+  font-family:Arial;
+}
+
+
+header p { 
+  color: #111; 
+  display: block; 
+  font-family: Arial, sans-serif; 
+  border-bottom: 1px solid #111;
+  z-index: 1; 
+}
+
+label{
+  font-family: monospace, serif;
+  font-weight: normal;
+  color: #222;
+}
+section#searchForm {
+  float:left;
+  position:fixed;
+  width: 25%;
+}
+
+section#results{
+  float:right;
+}
+
+
+nav{
+  float:right;
+  text-align: center;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: block;
+  display: inline;
+  width: 2em;
+  text-align: center;
+
+}
+
+nav ul a {
+text-align: center;
+
+}
