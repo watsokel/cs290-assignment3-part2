@@ -10,25 +10,43 @@ header p {
   z-index: 1; 
 }
 
+
 label{
   font-family: monospace, serif;
   font-weight: normal;
   color: #222;
 }
 
+@media screen and (min-width:600px) {
 
-section#searchForm {
-  float:left;  
-  width: 25%;
+
+  section#searchForm {
+      float: left;
+      width: 20%;
+      height: auto;
+      background-color: red;
+  }
+
+  section#favoriteGists{
+      float: left;
+      width: 20%;
+      height: auto;
+      background-color: green;
+  }
+
+  section#results{
+      float: right;
+      width: 80%;
+      height: 80%;
+      background-color: blue;
+  }
 }
 
-section#favoriteGists{
-  background-color:green;  
-}
-section#results{
-  float:left;
-  width:75%;
-  background-color: yellow;
+@media screen and (max-width:599px){
+  section#searchForm{
+    display:block;
+    background-color:red;
+  }
 }
 
 .pageNavigator{
