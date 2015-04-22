@@ -16,11 +16,15 @@ label{
   color: #222;
 }
 
+
 section#searchForm {
   float:left;  
   width: 25%;
 }
 
+section#favoriteGists{
+  background-color:green;  
+}
 section#results{
   float:left;
   width:75%;
