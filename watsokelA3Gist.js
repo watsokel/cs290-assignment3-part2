@@ -11,15 +11,23 @@ function submitForm(event) {
     }
   }
 
-  var navSection = document.getElementsByTagName('nav')[0];
-  var navList = document.createElement('ul');
+  var navSection = document.createElement('nav');
+  var prevNavSection = document.getElementsByTagName('nav')[0];
+  var pageNumberIndicator = document.createTextNode('Navigate to Page:');
+  navSection.appendChild(pageNumberIndicator);
   for(var k=0; k < selectedPages; k++){
-    var navListItem = document.createElement('li');
+    var pageLink = document.createElement('a');
+    pageLink.className = 'pageNavigator';
+    pageLink.href = 'javascript:void(0)';
+    pageLink.onclick = function(){
+      makeRequest('https://api.github.com/gists',k+1,selectedLangs);
+    }
     var pageNumber = document.createTextNode((k+1).toString());
-    navListItem.appendChild(pageNumber);
-    navList.appendChild(navListItem)
+    pageLink.appendChild(pageNumber);
+    navSection.appendChild(pageLink)
   }
-  navSection.appendChild(navList);
+  if(prevNavSection) document.body.replaceChild(navSection,prevNavSection);
+  else document.appendChild(navSection);
 
   while(selectedLangs.length){selectedLangs.pop();}
   var langs = document.getElementsByName('languages');
@@ -31,6 +39,7 @@ function submitForm(event) {
   makeRequest('https://api.github.com/gists',1,selectedLangs);
   return false;
 }
+
 
 function makeRequest(url, sPages, sLanguages){
   if(window.XMLHttpRequest) httpRequest = new XMLHttpRequest();
@@ -59,6 +68,8 @@ function processData(){
         if(selectedLangs.length != 0){
           response = filterByLang(response);
         }
+        //var displayPages = Math.ceil(response.length/30);
+        //if(displayPages>1){
         displayResults(response);
       }else console.log('Problem with the request');
     }
@@ -82,9 +93,8 @@ function filterByLang(r){
 function displayResults(r){
   var resultsSection = document.getElementById('results');
   var table = document.createElement('table');
-  
+  table.id = 'resultsTable';
   var thead = document.createElement('thead');
-
   var tr = document.createElement('tr');
   for(var j=0; j<3; j++){
     var th = document.createElement('th');
@@ -137,7 +147,6 @@ function displayResults(r){
           gistURL.setAttribute('href',gistURLText.data);
           gistURL.appendChild(gistURLText);
           td.appendChild(gistURL);
-          debugger;
         }
         if(j==2 && k==0) {
           var tdText = document.createTextNode('Language');
@@ -153,6 +162,8 @@ function displayResults(r){
     }
     table.appendChild(tbody);
   }
-  resultsSection.appendChild(table);  
   table.setAttribute('border','1');
+  var previousTable = document.getElementById('resultsTable');
+  if(previousTable) resultsSection.replaceChild(table,previousTable);
+  else resultsSection.appendChild(table);  
 }

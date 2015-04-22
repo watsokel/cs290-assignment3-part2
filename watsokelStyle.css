@@ -2,7 +2,6 @@ body{
   font-family:Arial;
 }
 
-
 header p { 
   color: #111; 
   display: block; 
@@ -16,16 +15,21 @@ label{
   font-weight: normal;
   color: #222;
 }
+
 section#searchForm {
-  float:left;
-  position:fixed;
+  float:left;  
   width: 25%;
 }
 
 section#results{
-  float:right;
+  float:left;
+  width:75%;
+  background-color: yellow;
 }
 
+.pageNavigator{
+  padding:2em;
+}
 
 nav{
   float:right;
@@ -46,6 +50,9 @@ nav ul li {
 }
 
 nav ul a {
-text-align: center;
+  text-align: center;
+}
 
+table {
+  width:100%;
 }
