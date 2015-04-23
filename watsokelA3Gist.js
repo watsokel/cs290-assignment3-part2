@@ -19,8 +19,9 @@ function submitForm(event) {
     var pageLink = document.createElement('a');
     pageLink.className = 'pageNavigator';
     pageLink.href = 'javascript:void(0)';
-    pageLink.onclick = function(){
-      makeRequest('https://api.github.com/gists',k+1,selectedLangs);
+    pageLink.onclick = function(event){
+      debugger;
+      makeRequest('https://api.github.com/gists',event.target.textContent);
     }
     var pageNumber = document.createTextNode((k+1).toString());
     pageLink.appendChild(pageNumber);
@@ -36,12 +37,12 @@ function submitForm(event) {
       selectedLangs.push(langs[k].value);
     }
   }
-  makeRequest('https://api.github.com/gists',1,selectedLangs);
+  makeRequest('https://api.github.com/gists',1);
   return false;
 }
 
 
-function makeRequest(url, sPages, sLanguages){
+function makeRequest(url, sPages){
   if(window.XMLHttpRequest) httpRequest = new XMLHttpRequest();
   else if(window.ActiveXObject){
     try { httpRequest = new ActiveXObject('Msxml2.XMLHTTP')}
@@ -195,8 +196,15 @@ function displayFavorites(){
     var gistString = localStorage.getItem(gistKey);
     var gistObject = JSON.parse(gistString);
     var dTerm = document.createElement('dt');
-    var gistKey = document.createTextNode(gistObject.Description);
-    dTerm.appendChild(gistKey);
+    
+    //var gistKey = document.createTextNode(gistObject.Description);
+    var gistKeyURL = document.createElement('a');
+    var gistKeyText = document.createTextNode(gistObject.Description);
+    gistKeyURL.setAttribute('href',gistKey);
+    gistKeyURL.appendChild(gistKeyText);
+    dTerm.appendChild(gistKeyURL);
+    
+    //dTerm.appendChild(gistKey);
     dList.appendChild(dTerm);
     var dDesc = document.createElement('dd');
     var gistValue = document.createTextNode('Language:' + gistObject.Language);
