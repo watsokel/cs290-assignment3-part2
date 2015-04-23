@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
  <head>
     <meta charset="UTF-8">
@@ -12,17 +13,18 @@
     <p>Programmed by: <span id="author">Kelvin Watson</span> (OSU ID 932540242)</p>
   </header>
   
+  <div id="container">
   <section id="searchForm">
 
     <h3 id="menuHeader">Search Gists from GitHub</h3>
     <form action="#" method="get" onSubmit="return submitForm()">
       <fieldset>
         <legend>Select Number of Pages to Display</legend>
-        <label for="onePage">1</label><input type="radio" name="pages" value="1"><br/>
-        <label for="twoPage">2</label><input type="radio" name="pages" value="2"><br/>
-        <label for="threePage">3</label><input type="radio" name="pages" value="3"><br/>
-        <label for="fourPage">4</label><input type="radio" name="pages" value="4"><br/>
-        <label for="fivePage">5</label><input type="radio" name="pages" value="5"><br/>
+        <label for="onePage">1</label><input type="radio" id="onePage" name="pages" value="1"><br/>
+        <label for="twoPage">2</label><input type="radio" id="twoPage" name="pages" value="2"><br/>
+        <label for="threePage">3</label><input type="radio" id="threePage" name="pages" value="3"><br/>
+        <label for="fourPage">4</label><input type="radio" id="fourPage" name="pages" value="4"><br/>
+        <label for="fivePage">5</label><input type="radio" id="fivePage" name="pages" value="5"><br/>
       </fieldset>
       <fieldset>
         <legend>Select Languages</legend>
@@ -36,15 +38,19 @@
       <input id="ajaxButton" name="submitButton" type="submit" value="Initiate Search">
     </form>
   </section>
-
-  <nav></nav>
-  <section id="results">
-    <p id="noSearchResultsYet">Use the Form to Start Searching</p>
-  </section>
   <section id="favorites">
     <h3>Favorite Gists</h3>
     <p id="noFavorites">No Favorites</p>
   </section>
+  </div>
+  <nav></nav>
+  <section id="results">
+    <p id="noSearchResultsYet">Use the Form to Start Searching</p>
+  </section>
+  <!--<section id="favorites">
+    <h3>Favorite Gists</h3>
+    <p id="noFavorites">No Favorites</p>
+  </section>-->
   <script src="watsokelA3Gist.js"></script>
   </body>
 </html>

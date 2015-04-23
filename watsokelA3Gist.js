@@ -120,7 +120,7 @@ function displayResults(r){
       var thText = document.createTextNode('GIST VALUE')
     }
     else if(j==2){
-      var thText = document.createTextNode("ADD TO FAVORITE")
+      var thText = document.createTextNode("ADD TO FAVORITES")
     }
     th.appendChild(thText);
     tr.appendChild(th);
