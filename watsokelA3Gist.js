@@ -71,16 +71,18 @@ function processData(){
         //var displayPages = Math.ceil(response.length/30);
         //if(displayPages>1){
         displayResults(response);
-        
         var faveButtons = document.getElementsByTagName('button');
         for(var i=0; i<faveButtons.length; i++){
           faveButtons[i].onclick = function(e){  
             var tempGist = { Description: response[e.target.id].description, 
             Language: response[e.target.id].files[Object.keys(response[e.target.id].files)[0]].language}
             localStorage.setItem(response[e.target.id].url,JSON.stringify(tempGist));
+            displayFavorites();
           };
           //faveButtons[i].addEventListener('click', function(e)(as above));
         }
+        displayFavorites();
+
       }else console.log('Problem with the request');
     }
   }
@@ -176,8 +178,25 @@ function displayResults(r){
   else resultsSection.appendChild(table);  
 }
 
-
-
-//function displayFavorites(){
-//  document.getElementById('favoriteGists').innerHTML = localStorage.getItem('description')
-//}  
+function displayFavorites(){
+  var listOfFaves = document.getElementById('favoriteGists');
+  var faveHeader = document.createElement('h3');
+  faveHeader.id = 'menuHeader';
+  faveHeader.innerHTML = 'Your Favorite Gists';
+  listOfFaves.appendChild(faveHeader);
+  var dList = document.createElement('dl');
+  for(var k=0, len=localStorage.length; k<len; k++){
+    var gistKey = localStorage.key(k);
+    var gistString = localStorage.getItem(gistKey);
+    var gistObject = JSON.parse(gistString);
+    var dTerm = document.createElement('dt');
+    var gistKey = document.createTextNode(gistObject.Description);
+    dTerm.appendChild(gistKey);
+    dList.appendChild(dTerm);
+    var dDesc = document.createElement('dd');
+    var gistValue = document.createTextNode(gistKey);
+    dDesc.appendChild(gistValue);
+    dList.appendChild(dDesc);
+  }
+  listOfFaves.appendChild(dList);
+}
