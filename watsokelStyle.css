@@ -15,6 +15,7 @@ header p {
   font-style: italic;
   font-weight: bold;
 }
+
 label{
   font-family: monospace, serif;
   font-weight: normal;
@@ -31,7 +32,7 @@ label{
       background-color: red;
   }
 
-  section#favoriteGists{
+  section#favorites{
       float: left;
       width: 30%;
       height: auto;
@@ -41,7 +42,7 @@ label{
   section#results{
       float: right;
       width: 70%;
-      height: 80%;
+      height: 100%;
       background-color: yellow;
   }
 }
