@@ -64,6 +64,7 @@ function processData(){
     console.log(httpRequest.readyState);
     if(httpRequest.readyState===4){
       if(httpRequest.status===200){
+        debugger;
         var response = JSON.parse(httpRequest.responseText);
         if(selectedLangs.length != 0){
           response = filterByLang(response);
@@ -185,6 +186,7 @@ function displayFavorites(){
   faveHeader.innerHTML = 'Your Favorite Gists';
   listOfFaves.appendChild(faveHeader);
   var dList = document.createElement('dl');
+
   for(var k=0, len=localStorage.length; k<len; k++){
     var gistKey = localStorage.key(k);
     var gistString = localStorage.getItem(gistKey);
@@ -194,7 +196,7 @@ function displayFavorites(){
     dTerm.appendChild(gistKey);
     dList.appendChild(dTerm);
     var dDesc = document.createElement('dd');
-    var gistValue = document.createTextNode(gistKey);
+    var gistValue = document.createTextNode(gistObject.Language);
     dDesc.appendChild(gistValue);
     dList.appendChild(dDesc);
   }
