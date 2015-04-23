@@ -1,18 +1,81 @@
-body{
-  font-family:Arial;
-  font-size: 0.8em;
+@media screen and (min-width:600px) {
+  section#searchForm {
+      float: left;
+      width: 20%;
+      height: auto;
+  }
+
+  section#favorites{
+    float: left;
+    width: 20%;
+    height: auto;
+    font-family: sans-serif;
+    border: 5px solid #1F497D;
+    border-radius: 5px;
+    padding: 15px;  }
+
+  section#results{
+      float: right;
+      width: 80%;
+      height: auto;
+  }
 }
+
+@media screen and (max-width:599px){
+  section#searchForm{
+    display:block;
+  }
+}
+
+
+html{
+  font-family: verdana,sans-serif;
+}
+
+h1 {
+  margin: 0.4em 0 0.4em 0;
+  color: #333;
+  font-weight: normal;
+  font-size: 2em;
+  line-height: 40px;
+}
+
+h2 {
+  margin: 0.4em 0 0.4em 0;
+  color: #333;
+  font-weight:normal;
+  font-size: 1.5em;
+  line-height: 40px;
+}
+
+fieldset {
+    font-family: sans-serif;
+    border: 5px solid #1F497D;
+    background: #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px; 
+}
+
+fieldset legend {
+    background: #1F497D;
+    color: #fff;
+    padding: 5px 10px ;
+    border-radius: 5px;
+    box-shadow: 0 0 0 5px #ddd;
+    margin-left: 20px;
+}
+ 
 
 header p { 
   color: #111; 
   display: block; 
-  font-family: Arial, sans-serif; 
   border-bottom: 1px solid #111;
   z-index: 1; 
 }
 
 #menuHeader{
-  font-style: italic;
   font-weight: bold;
 }
 
@@ -22,37 +85,6 @@ label{
   color: #222;
 }
 
-@media screen and (min-width:600px) {
-
-
-  section#searchForm {
-      float: left;
-      width: 30%;
-      height: auto;
-      background-color: red;
-  }
-
-  section#favorites{
-      float: left;
-      width: 30%;
-      height: auto;
-      background-color: green;
-  }
-
-  section#results{
-      float: right;
-      width: 70%;
-      height: auto;
-      background-color: yellow;
-  }
-}
-
-@media screen and (max-width:599px){
-  section#searchForm{
-    display:block;
-    background-color:red;
-  }
-}
 
 .pageNavigator{
   padding:2em;
@@ -62,6 +94,7 @@ nav{
   float:right;
   text-align: center;
 }
+/*Reference for table styling: http://www.textfixer.com/tutorials/css-tables.php*/
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -80,19 +113,52 @@ nav ul a {
   text-align: center;
 }
 
-table {
-  width:100%;
+/*source http://www.textfixer.com/tutorials/css-tables.php*/
+/*source http://stackoverflow.com/questions/19774653/css3-for-html5-legend-inside-fieldset*/
+
+table{
+  font-family: verdana,arial,sans-serif;
+  color:#333333;
+  border: 5px solid #1F497D;
+  width:90%;
+  border: 5px solid #1F497D;
+  background: #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-left:auto; 
+    margin-right:auto;
 }
 
+th {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #dedede;
+}
 
- th {
-    background-color: rgb(112, 196, 105);
-    color: white;
-    font-weight: normal;
-    text-align: center;
-  }
-  td {
-    background-color: rgb(238, 238, 238);
-    color: rgb(111, 111, 111);
-  }
- 
+td {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #ffffff;
+}
+
+#ajaxButton{
+  color: white;
+font-family: sans-serif;
+    border: 5px solid #1F497D;
+    background:#1F497D;
+    border-radius: 5px;
+    padding: 15px; /* this is a light blue */
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#ajaxButton:hover{
+    color:#1F497D;
+    background:white;
+  
+}

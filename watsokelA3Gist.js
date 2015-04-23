@@ -175,7 +175,7 @@ function displayResults(r){
     }
     table.appendChild(tbody);
   }
-  table.setAttribute('border','1');
+  //table.setAttribute('border','1');
   var previousTable = document.getElementById('resultsTable');
   if(previousTable) resultsSection.replaceChild(table,previousTable);
   else resultsSection.appendChild(table);  
