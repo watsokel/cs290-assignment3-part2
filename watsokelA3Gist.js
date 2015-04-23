@@ -78,11 +78,16 @@ function processData(){
             var tempGist = { Description: response[e.target.id].description, 
             Language: response[e.target.id].files[Object.keys(response[e.target.id].files)[0]].language}
             localStorage.setItem(response[e.target.id].url,JSON.stringify(tempGist));
-            displayFavorites();
           };
-          //faveButtons[i].addEventListener('click', function(e)(as above));
         }
-        displayFavorites();
+        displayOrRemoveFavorites();
+        //var removeButtons = document.getElementsByTagName('button');
+        //for(var i=0; i<removeButtons.length; i++){
+        //  removeButtons[i].onclick = function(e){
+        //    debugger;
+        //    //localStorage.removeItem()
+        //  }
+        //}
 
       }else console.log('Problem with the request');
     }
@@ -120,7 +125,7 @@ function displayResults(r){
       var thText = document.createTextNode('GIST VALUE')
     }
     else if(j==2){
-      var thText = document.createTextNode("ADD TO FAVORITES")
+      var thText = document.createTextNode("ADD TO FAVORITE")
     }
     th.appendChild(thText);
     tr.appendChild(th);
@@ -156,7 +161,6 @@ function displayResults(r){
         if(j==1 && k==1) {
           var gistURL = document.createElement('a');
           var gistURLText = document.createTextNode(r[i].url);
-          //gistURL.href = gistURLText;
           gistURL.setAttribute('href',gistURLText.data);
           gistURL.appendChild(gistURLText);
           td.appendChild(gistURL);
@@ -175,13 +179,12 @@ function displayResults(r){
     }
     table.appendChild(tbody);
   }
-  //table.setAttribute('border','1');
   var previousTable = document.getElementById('resultsTable');
   if(previousTable) resultsSection.replaceChild(table,previousTable);
   else resultsSection.appendChild(table);  
 }
 
-function displayFavorites(){
+function displayOrRemoveFavorites(){
   var faveSection = document.getElementById('favorites');
   var noFaveParagraph = document.getElementById('noFavorites');
   if(noFaveParagraph) faveSection.removeChild(noFaveParagraph);
@@ -195,14 +198,16 @@ function displayFavorites(){
 
   for(var k=0, len=localStorage.length; k<len; k++){
     var gistKey = localStorage.key(k);
+    gistKey.id = 'key'+k;
     var gistString = localStorage.getItem(gistKey);
     var gistObject = JSON.parse(gistString);
     var dTerm = document.createElement('dt');
     
     //var gistKey = document.createTextNode(gistObject.Description);
-    var gistKeyURL = document.createElement('a');
-    var gistKeyText = document.createTextNode(gistObject.Description);
+    /*var gistKeyURL = document.createElement('a');
+    var gistKeyText = document.createTextNode(gistObject.Description+'(Language:' +gistObject.Language+')');
     gistKeyURL.setAttribute('href',gistKey);
+    
     gistKeyURL.appendChild(gistKeyText);
     dTerm.appendChild(gistKeyURL);
     
@@ -210,8 +215,38 @@ function displayFavorites(){
     dList.appendChild(dTerm);
     var dDesc = document.createElement('dd');
     var gistValue = document.createTextNode('Language:' + gistObject.Language);
-    dDesc.appendChild(gistValue);
+    
+    dDesc.appendChild(gistValue);    
+    dList.appendChild(dDesc);*/
+
+    var gistDescText = document.createTextNode(gistObject.Description+'(Language:'+gistObject.Language+')');    
+    dTerm.appendChild(gistDescText);
+    dList.appendChild(dTerm);
+
+    
+    var dDesc = document.createElement('dd');
+    var gistURL = document.createElement('a');
+    var gistURLText = document.createTextNode(gistKey);
+    gistURL.setAttribute('href',gistURLText);
+    gistURL.appendChild(gistURLText);
+    dDesc.appendChild(gistURL);    
     dList.appendChild(dDesc);
+
+    var dDesc2 = document.createElement('dd');
+    var gistBox = document.createElement('button');
+    var gistBoxText = document.createTextNode('Remove');
+    gistBox.id = 'rButton'+k;
+    gistBox.appendChild(gistBoxText);
+    
+    gistBox.onclick = function(e){
+      var buttonNumber = (e.target.id).slice(7);
+      debugger;
+      var itemToRemove = document.getElementById('key'+(e.target.id));
+      //localStorage.removeItem(gistKey('key'+));
+    }
+
+    dDesc2.appendChild(gistBox);    
+    dList.appendChild(dDesc2);
   }
   
   var previousDList = document.getElementById('favoriteGists');
