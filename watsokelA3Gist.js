@@ -71,6 +71,16 @@ function processData(){
         //var displayPages = Math.ceil(response.length/30);
         //if(displayPages>1){
         displayResults(response);
+        
+        var faveButtons = document.getElementsByTagName('button');
+        for(var i=0; i<faveButtons.length; i++){
+          faveButtons[i].onclick = function(e){  
+            var tempGist = { Description: response[e.target.id].description, 
+            Language: response[e.target.id].files[Object.keys(response[e.target.id].files)[0]].language}
+            localStorage.setItem(response[e.target.id].url,JSON.stringify(tempGist));
+          };
+          //faveButtons[i].addEventListener('click', function(e)(as above));
+        }
       }else console.log('Problem with the request');
     }
   }
@@ -120,7 +130,7 @@ function displayResults(r){
       for(var k=0; k<3; k++){
         var td = document.createElement('td');
         if(j==0 && k==0) {
-          var tdText = document.createTextNode('Description:');
+          var tdText = document.createTextNode('Description');
           td.appendChild(tdText);
         }
         if(j==0 && k==1) {
@@ -130,11 +140,9 @@ function displayResults(r){
         if(j==0 && k==2){
           var favorite = document.createElement('button');
           var t = document.createTextNode("Add to Favorites");
+          favorite.id = i;
           favorite.appendChild(t);
           td.appendChild(favorite);
-
-          //ONCLICK? SAVE TO SESSION STORAGE?
-
         }
         if(j==1 && k==0) {
           var tdText = document.createTextNode('URL');
@@ -167,3 +175,9 @@ function displayResults(r){
   if(previousTable) resultsSection.replaceChild(table,previousTable);
   else resultsSection.appendChild(table);  
 }
+
+
+
+//function displayFavorites(){
+//  document.getElementById('favoriteGists').innerHTML = localStorage.getItem('description')
+//}  
