@@ -105,6 +105,8 @@ function filterByLang(r){
 
 function displayResults(r){
   var resultsSection = document.getElementById('results');
+  var noSearchResults = document.getElementById('noSearchResultsYet');
+  if(noSearchResults) resultsSection.removeChild(noSearchResults);
   var table = document.createElement('table');
   table.id = 'resultsTable';
   var thead = document.createElement('thead');
