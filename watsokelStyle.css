@@ -1,3 +1,7 @@
+html{
+  font-family: sans-serif;
+}
+
 #lowerContainer{
   width:100%;
   overflow:hidden;  
@@ -26,7 +30,6 @@ h2 {
   background:#e6e6e6;
 }
 
-
 #favorites{
   float:right;
   width:35%;
@@ -38,9 +41,6 @@ h2 {
 #lowerContainer{
   clear:both;
   display:block;
-}
-html{
-  font-family: sans-serif;
 }
 
 #searchForm{
@@ -62,7 +62,6 @@ h1 {
   font-size: 2em;
   line-height: 40px;
 }
-
 
 fieldset {
     font-family: sans-serif;
@@ -112,7 +111,6 @@ nav ul li {
   display: inline-block;
   width: 2em;
   text-align: center;
-
 }
 
 nav ul a {
@@ -196,7 +194,6 @@ dl {
   border: 1px solid #3A3A3A;
   border-collapse: collapse;
   background:#e6e6e6;
-
 }
 
 dt {

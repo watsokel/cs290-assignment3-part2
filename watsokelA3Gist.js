@@ -71,8 +71,6 @@ function processData(){
         if(selectedLangs.length != 0){
           response = filterByLang(response);
         }
-        //var displayPages = Math.ceil(response.length/30);
-        //if(displayPages>1){
         displayResults(response);
         var faveButtons = document.getElementsByClassName('addToFaveButtons');
         for(var i=0; i<faveButtons.length; i++){
