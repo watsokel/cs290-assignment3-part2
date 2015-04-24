@@ -91,9 +91,12 @@ label{
 }
 
 nav{
-  text-align: center;
+  text-align: left;
+  text-transform: uppercase;
   width:100%;
-  margin-bottom: 20px;
+  padding-top:30px;
+  padding-left:50px;
+  margin-bottom: 10px;
   float:left;
 }
 
