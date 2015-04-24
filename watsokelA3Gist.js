@@ -29,7 +29,7 @@ function submitForm(event) {
     pageLink.appendChild(pageNumber);
     navSection.appendChild(pageLink)
   }
-  if(prevNavSection) document.body.replaceChild(navSection,prevNavSection);
+  if(prevNavSection) document.getElementById('lowerContainer').replaceChild(navSection,prevNavSection);
   else document.appendChild(navSection);
 
   while(selectedLangs.length){selectedLangs.pop();}
@@ -74,7 +74,7 @@ function processData(){
         //var displayPages = Math.ceil(response.length/30);
         //if(displayPages>1){
         displayResults(response);
-        var faveButtons = document.getElementsByTagName('button');
+        var faveButtons = document.getElementsByClassName('addToFaveButtons');
         for(var i=0; i<faveButtons.length; i++){
           faveButtons[i].onclick = function(e){  
             var tempGist = { Description: response[e.target.id].description, 
@@ -144,6 +144,7 @@ function displayResults(r){
         if(j==0 && k==2){
           var favorite = document.createElement('button');
           var t = document.createTextNode("Add to Favorites");
+          favorite.className = 'addToFaveButtons';
           favorite.id = i;
           favorite.appendChild(t);
           td.appendChild(favorite);
@@ -179,18 +180,15 @@ function displayResults(r){
 }
 
 function displayOrRemoveFavorites(){
-  debugger;
   var faveSection = document.getElementById('favorites');
   var dList = document.createElement('dl');
   dList.id = 'favoriteGists';
 
   for(var k=0, len=localStorage.length; k<len; k++){
-    
     var gistKey = localStorage.key(k);
-    
-    //gistKey.id = 'key'+k;
     var gistString = localStorage.getItem(gistKey);
     var gistObject = JSON.parse(gistString);
+    
     var dTerm = document.createElement('dt');
     dTerm.className = gistKey;
     var gistDescText = document.createTextNode(gistObject.Description+'(Language:'+gistObject.Language+')');    
@@ -230,7 +228,6 @@ function displayOrRemoveFavorites(){
         else faveSection.appendChild(newNoFavesParagraph);
       }
     }
-
     dDesc2.appendChild(gistBox);    
     dList.appendChild(dDesc2);
   }
