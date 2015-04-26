@@ -135,7 +135,13 @@ function displayResults(r){
           td.appendChild(tdText);
         }
         if(j==0 && k==1) {
-          var tdText = document.createTextNode(r[i].description);
+          var tdText;
+          if(r[i].description){
+            tdText = document.createTextNode(r[i].description);
+          }
+          else {
+            tdText = document.createTextNode('No Description');
+          }
           td.appendChild(tdText);
         }
         if(j==0 && k==2){
