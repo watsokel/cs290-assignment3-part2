@@ -22,7 +22,6 @@ function submitForm(event) {
     pageLink.className = 'pageNavigator';
     pageLink.href = 'javascript:void(0)';
     pageLink.onclick = function(event){
-      debugger;
       makeRequest('https://api.github.com/gists',event.target.textContent);
     }
     var pageNumber = document.createTextNode((k+1).toString());
@@ -201,7 +200,7 @@ function displayOrRemoveFavorites(){
     gistURLText.className = gistKey;
     gistURL.setAttribute('href',gistURLText);
     gistURL.appendChild(gistURLText);
-    dDesc.appendChild(gistURL);    
+    dDesc.appendChild(gistURL);
     dList.appendChild(dDesc);
 
     var dDesc2 = document.createElement('dd');
@@ -213,13 +212,10 @@ function displayOrRemoveFavorites(){
     
     gistBox.onclick = function(e){
       localStorage.removeItem(e.target.className);
+      var list = document.getElementById('favoriteGists');
       var termDescSet = document.getElementsByClassName(e.target.className);
       for(var i=0; i<termDescSet.length; i++){
-        if(typeof termDescSet[i].remove === 'undefined') {
-          termDescSet[i].removeNode(true)
-        } else {
-          termDescSet[i].remove();
-        }
+        termDescSet[i].parentNode.removeChild(termDescSet[i]);
       }
       if(localStorage.length==0){    
         var oldNoFavesParagraph = document.getElementById('noFaves');
@@ -244,25 +240,13 @@ function displayOrRemoveFavorites(){
   }
   if(localStorage.length){
     var previousDList = document.getElementById('favoriteGists');
+    if(localStorage) if(document.getElementById('noFaves')) {
+      var noFavesEl = document.getElementById('noFaves');
+      noFavesEl.parentNode.removeChild(noFavesEl);
+    }
     if(previousDList) {
-      if(localStorage) if(document.getElementById('noFaves')) {
-        var noFavesEl = document.getElementById('noFaves');
-        if(typeof noFavesEl.remove === 'undefined'){
-          noFavesEl.removeNode(true);
-        } else {
-          noFavesEl.remove();
-        }
-      }
       faveSection.replaceChild(dList,previousDList);
     } else {
-      if(localStorage) if(document.getElementById('noFaves')){
-       var noFavesEl = document.getElementById('noFaves');
-        if(typeof noFavesEl.remove === 'undefined'){
-          noFavesEl.removeNode(true);
-        } else {
-          noFavesEl.remove();
-        }
-     }
       faveSection.appendChild(dList); 
     }
   }
