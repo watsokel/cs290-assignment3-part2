@@ -215,7 +215,11 @@ function displayOrRemoveFavorites(){
       localStorage.removeItem(e.target.className);
       var termDescSet = document.getElementsByClassName(e.target.className);
       for(var i=0; i<termDescSet.length; i++){
-        termDescSet[i].remove();
+        if(typeof termDescSet[i].remove === 'undefined') {
+          termDescSet[i].removeNode(true)
+        } else {
+          termDescSet[i].remove();
+        }
       }
       if(localStorage.length==0){    
         var oldNoFavesParagraph = document.getElementById('noFaves');
@@ -241,10 +245,24 @@ function displayOrRemoveFavorites(){
   if(localStorage.length){
     var previousDList = document.getElementById('favoriteGists');
     if(previousDList) {
-      if(localStorage) if(document.getElementById('noFaves')) document.getElementById('noFaves').remove();
+      if(localStorage) if(document.getElementById('noFaves')) {
+        var noFavesEl = document.getElementById('noFaves');
+        if(typeof noFavesEl.remove === 'undefined'){
+          noFavesEl.removeNode(true);
+        } else {
+          noFavesEl.remove();
+        }
+      }
       faveSection.replaceChild(dList,previousDList);
     } else {
-      if(localStorage) if(document.getElementById('noFaves')) document.getElementById('noFaves').remove();
+      if(localStorage) if(document.getElementById('noFaves')){
+       var noFavesEl = document.getElementById('noFaves');
+        if(typeof noFavesEl.remove === 'undefined'){
+          noFavesEl.removeNode(true);
+        } else {
+          noFavesEl.remove();
+        }
+     }
       faveSection.appendChild(dList); 
     }
   }
