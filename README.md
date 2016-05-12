@@ -1,4 +1,4 @@
-# cs290-assignment3-part2
+# ajax and html
 cs290: Assignment 3, Part 2: Adding AJAX and HTML
 
 Assignment 3 part 1 Repo: https://github.com/watsokel/cs290-assignment3-part1
